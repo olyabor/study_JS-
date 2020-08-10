@@ -1,14 +1,43 @@
-let num = 266219;
-//Количество цифр для положительного числа num
-let numLength = Math.floor(Math.log10(num) + 1);
-let productOfNumbers = 1;
-let n = num;
-for (let i = 1; i <= numLength; i++) {
-  let r = n % 10;
-  n = (n - r) / 10;
-  productOfNumbers *= r;
+'use strict';
+let weekday = {
+  'ru': [
+    'Понедельник',
+    'Вторник',
+    'Среда',
+    'Четверг',
+    'Пятница',
+    'Суббота',
+    'Воскресенье',
+  ],
+  'en': [
+    'Monday',
+    'Tuesday', 
+    'Wednesday', 
+    'Thursday', 
+    'Friday', 
+    'Saturday',
+    'Sunday'],
+};
+
+let lang = 'ru';
+if (lang === 'ru') {
+  console.log(weekday.ru);
+} else if (lang === 'en') {
+  console.log(weekday.en);
 }
-console.log(productOfNumbers);
-// console.log(productOfNumbers**3); => 2176782336
-// Вывести на экран первые 2 цифры полученного числа
-console.log((productOfNumbers ** 3).toString().substring(0, 2));
+
+lang = 'en';
+switch (lang) {
+  case 'ru': 
+    console.log(weekday.ru);
+    break;
+  case 'en':
+    console.log(weekday.en);
+    break;
+}
+
+console.log(weekday[lang]);
+
+let namePerson = 'Максим';
+let result = namePerson === 'Артем' ? 'директор' : namePerson === 'Максим' ? 'преподаватель' : 'студент';
+console.log(result);
