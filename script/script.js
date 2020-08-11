@@ -1,6 +1,6 @@
 'use strict';
-let weekday = {
-  'ru': [
+let weekday = [
+  [
     'Понедельник',
     'Вторник',
     'Среда',
@@ -9,7 +9,7 @@ let weekday = {
     'Суббота',
     'Воскресенье',
   ],
-  'en': [
+  [
     'Monday',
     'Tuesday', 
     'Wednesday', 
@@ -17,26 +17,27 @@ let weekday = {
     'Friday', 
     'Saturday',
     'Sunday'],
-};
+];
+
+let langList = ['ru', 'en'];
 
 let lang = 'ru';
 if (lang === 'ru') {
-  console.log(weekday.ru);
+  console.log(weekday[0]);
 } else if (lang === 'en') {
-  console.log(weekday.en);
+  console.log(weekday[1]);
 }
 
-lang = 'en';
 switch (lang) {
   case 'ru': 
-    console.log(weekday.ru);
+    console.log(weekday[0]);
     break;
   case 'en':
-    console.log(weekday.en);
+    console.log(weekday[1]);
     break;
 }
 
-console.log(weekday[lang]);
+console.log(weekday[langList.indexOf(lang)]);
 
 let namePerson = 'Максим';
 let result = namePerson === 'Артем' ? 'директор' : namePerson === 'Максим' ? 'преподаватель' : 'студент';
