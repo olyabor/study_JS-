@@ -1,44 +1,24 @@
 'use strict';
-let weekday = [
-  [
-    'Понедельник',
-    'Вторник',
-    'Среда',
-    'Четверг',
-    'Пятница',
-    'Суббота',
-    'Воскресенье',
-  ],
-  [
-    'Monday',
-    'Tuesday', 
-    'Wednesday', 
-    'Thursday', 
-    'Friday', 
-    'Saturday',
-    'Sunday'],
-];
 
-let langList = ['ru', 'en'];
+let stringFunction = function (argument) {
+  if (typeof argument !== 'string') {
+    return 'В качестве аргумента передана не строка';
+  } else {
+    let start = 0,
+        end = argument.length;
+    while (argument.substr(start, end).startsWith(' ')) {
+      start++;
+    }
+    while (argument.substr(start, end)  .endsWith(' ')) {
+      end--;
+    }
+    argument = argument.substr(start, end);
+  return (argument.length > 30) ? argument.substr(0, 30) + '...' : argument;
+  }
+};
 
-let lang = 'ru';
-if (lang === 'ru') {
-  console.log(weekday[0]);
-} else if (lang === 'en') {
-  console.log(weekday[1]);
-}
-
-switch (lang) {
-  case 'ru': 
-    console.log(weekday[0]);
-    break;
-  case 'en':
-    console.log(weekday[1]);
-    break;
-}
-
-console.log(weekday[langList.indexOf(lang)]);
-
-let namePerson = 'Максим';
-let result = namePerson === 'Артем' ? 'директор' : namePerson === 'Максим' ? 'преподаватель' : 'студент';
-console.log(result);
+console.log(stringFunction('       Короткая строка   '));
+console.log(stringFunction('                '));
+console.log(stringFunction(23));
+console.log(stringFunction([0, 1]));
+console.log(stringFunction('       Строка, которая содержит более 30 знаков   '));
