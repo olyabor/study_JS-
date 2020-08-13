@@ -1,28 +1,54 @@
 'use strict';
-//Вывести в консоль только те числа, что начинаются с цифры 2 или 4
-let arr = ['276', '1538', '289', '1111', '476', '358', '67965'];
-
-for (let i = 0; i < arr.length; i++) {
-  if (arr[i][0] === '2' || arr[i][0] === '4') {
-    console.log(arr[i]);
-  }
-}
-//Вывести в столбик все простые числа от 1 до 100
-//Проверить, является ли число простым
-let isPrime = function(n) {
-  let flag = true;
-  for (let i = 2; i <= Math.round(n ** 0.5); i++) {
-    if (i > 10 && (i % 2 === 0 || i % 10 === 5)) {
-      continue;
-    } else if (n % i === 0) {
-      flag = false;
-    }
-  }
-  return flag;
+const attemptNumber = 10;
+let count = attemptNumber;
+let isNumber = function(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
 };
-//Выыести простые числа в консоль
-for (let i = 2; i < 100; i++) {
-  if (isPrime(i)) {
-    console.log(i + ' делится только на 1 и ' + i);
+
+let guessingNumber = function () {
+  let correctAnswer = Math.ceil(Math.random() * 100);
+  let startGame = confirm('Угадай число от 1 до 100');
+  let userAnswer;
+
+  let attempt = function() {
+    userAnswer = prompt('Введи число');
+    if (count > 1) {
+      if (userAnswer !== null) {
+        if (!isNumber(userAnswer)) {
+          alert('Введи число!');
+          attempt();
+        } else if (+userAnswer === correctAnswer) {
+          startGame = confirm(
+            'Поздравляю, Вы угадали!!! Хотели бы сыграть еще?'
+          );
+          if (startGame) {
+            correctAnswer = Math.ceil(Math.random() * 100);
+            count = attemptNumber;
+            attempt();
+          }
+        } else if (+userAnswer > correctAnswer) {
+          count--;
+          alert('Загаданное число меньше, осталось попыток ' + count);
+          attempt();
+        } else {
+          count--;
+          alert('Загаданное число больше, осталось попыток ' + count);
+          attempt();
+        }
+      }
+    } else {
+      startGame = confirm('Попытки закончились, хотите сыграть еще?');
+      if (startGame) {
+        correctAnswer = Math.ceil(Math.random() * 100);
+        count = attemptNumber;
+        attempt();
+      }
+    }
+  };
+
+  if (startGame) {
+    attempt();
   }
-}
+};
+
+guessingNumber();
