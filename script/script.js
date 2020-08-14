@@ -1,44 +1,24 @@
 'use strict';
-let weekday = [
-  [
-    'Понедельник',
-    'Вторник',
-    'Среда',
-    'Четверг',
-    'Пятница',
-    'Суббота',
-    'Воскресенье',
-  ],
-  [
-    'Monday',
-    'Tuesday', 
-    'Wednesday', 
-    'Thursday', 
-    'Friday', 
-    'Saturday',
-    'Sunday'],
+let main = document.querySelector('.main');
+let date = new Date();
+console.log(date);
+
+let week = [
+  'Понедельник',
+  'Вторник',
+  'Среда',
+  'Четверг',
+  'Пятница',
+  'Суббота',
+  'Воскресенье',
 ];
 
-let langList = ['ru', 'en'];
-
-let lang = 'ru';
-if (lang === 'ru') {
-  console.log(weekday[0]);
-} else if (lang === 'en') {
-  console.log(weekday[1]);
+for (let i = 0; i < week.length; i++) {
+  main.innerHTML += `<div class = ${
+      i > 4 ? 'weekend' : 'weekday'
+    }> ${week[i]}</div>`;
+  if (i === date.getDay() - 1) {
+    main.querySelectorAll('div')[i].classList.add('today');
+  }
 }
 
-switch (lang) {
-  case 'ru': 
-    console.log(weekday[0]);
-    break;
-  case 'en':
-    console.log(weekday[1]);
-    break;
-}
-
-console.log(weekday[langList.indexOf(lang)]);
-
-let namePerson = 'Максим';
-let result = namePerson === 'Артем' ? 'директор' : namePerson === 'Максим' ? 'преподаватель' : 'студент';
-console.log(result);

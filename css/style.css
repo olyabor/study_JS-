@@ -1,0 +1,13 @@
+.main {
+  font: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+.weekday {
+  font-style: normal;
+}
+.weekend {
+  font-style: italic;
+}
+.today {
+  font-weight: bold;
+}
