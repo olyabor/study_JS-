@@ -44,8 +44,8 @@ let appData = {
     appData.budget = +salaryAmount.value;
 
     appData.getExpenses();
-    appData.getIncome();
     appData.getExpensesMonth();
+    appData.getIncome();
     appData.getAddExpenses();
     appData.getAddIncome();
     appData.getBudget();
@@ -64,8 +64,6 @@ let appData = {
   },
   addExpensesBlock: function () {
     let cloneExpensesItem = expensesItems[0].cloneNode(true);
-    cloneExpensesItem.querySelector('.expenses-title').value = '';
-    cloneExpensesItem.querySelector('.expenses-amount').value = '';
     expensesItems[0].parentNode.insertBefore(cloneExpensesItem, expensesAdd);
     expensesItems = document.querySelectorAll('.expenses-items');
 
@@ -90,15 +88,13 @@ let appData = {
         appData.income[itemIncome] = cashIncome;
       }
     });
-
+    appData.incomeMonth = 0;
     for (let key in appData.income) {
       appData.incomeMonth += +appData.income[key];
     }
   },
   addIncomeBlock: function () {
     let cloneIncomeItem = incomeItems[0].cloneNode(true);
-    cloneIncomeItem.querySelector('.income-title').value = '';
-    cloneIncomeItem.querySelector('.income-amount').value = '';
     incomeItems[0].parentNode.insertBefore(cloneIncomeItem, incomeAdd);
     incomeItems = document.querySelectorAll('.income-items');
 
@@ -107,6 +103,7 @@ let appData = {
     }
   },
   getAddExpenses: function () {
+    appData.addExpenses = [];
     let addExpenses = additionalExpensesItem.value.split(', ');
     addExpenses.forEach(function (item) {
       item = item.trim();
@@ -116,6 +113,7 @@ let appData = {
     });
   },
   getAddIncome: function () {
+    appData.addIncome = [];
     additionalIncomeItem.forEach(function (item) {
       let itemValue = item.value.trim();
       if (itemValue !== '') {
@@ -124,10 +122,10 @@ let appData = {
     });
   },
   getExpensesMonth: function () {
+    appData.expensesMonth = 0;
     for (let key in appData.expenses) {
       appData.expensesMonth += +appData.expenses[key];
     }
-    return appData.expensesMonth;
   },
   getBudget: function () {
     appData.budgetMonth = appData.budget + appData.incomeMonth - appData.expensesMonth;
