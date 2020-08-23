@@ -64,6 +64,8 @@ let appData = {
   },
   addExpensesBlock: function () {
     let cloneExpensesItem = expensesItems[0].cloneNode(true);
+    cloneExpensesItem.querySelector('.expenses-title').value = '';
+    cloneExpensesItem.querySelector('.expenses-amount').value = '';
     expensesItems[0].parentNode.insertBefore(cloneExpensesItem, expensesAdd);
     expensesItems = document.querySelectorAll('.expenses-items');
 
@@ -95,6 +97,8 @@ let appData = {
   },
   addIncomeBlock: function () {
     let cloneIncomeItem = incomeItems[0].cloneNode(true);
+    cloneIncomeItem.querySelector('.income-title').value = '';
+    cloneIncomeItem.querySelector('.income-amount').value = '';
     incomeItems[0].parentNode.insertBefore(cloneIncomeItem, incomeAdd);
     incomeItems = document.querySelectorAll('.income-items');
 
@@ -191,16 +195,5 @@ document
         item.value = item.value.replace(/[^\d]/g, '');
       });
     });
-// console.log(
-//   appData.addExpenses
-//     .map(function (item) {
-//       return isString(item) ? item[0].toUpperCase() + item.slice(1) : item;
-//     })
-//     .join(', ')
-// );
 
-// console.log('Наша программа включает в себя данные: ');
-// for (let key in appData) {
-//   console.log(key + ': ' + appData[key]);
-// }
 
