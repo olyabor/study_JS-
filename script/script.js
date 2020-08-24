@@ -1,24 +1,16 @@
 'use strict';
-let main = document.querySelector('.main');
-let date = new Date();
-console.log(date);
+let color = document.getElementById('color'),
+  change = document.getElementById('change'),
+  wrapper = document.querySelector('.wrapper');
 
-let week = [
-  'Понедельник',
-  'Вторник',
-  'Среда',
-  'Четверг',
-  'Пятница',
-  'Суббота',
-  'Воскресенье',
-];
+change.addEventListener('click', function() {
+  let randomColor = '#' +
+    Math.floor(Math.random() * 256).toString(16) +
+    Math.floor(Math.random() * 256).toString(16) +
+    Math.floor(Math.random() * 256).toString(16);
+  wrapper.style.backgroundColor = randomColor;
+  change.style.color = randomColor;
+  color.textContent = randomColor;
+});
 
-for (let i = 0; i < week.length; i++) {
-  main.innerHTML += `<div class = ${
-      i > 4 ? 'weekend' : 'weekday'
-    }> ${week[i]}</div>`;
-  if (i === date.getDay() - 1) {
-    main.querySelectorAll('div')[i].classList.add('today');
-  }
-}
 

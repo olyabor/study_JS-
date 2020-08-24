@@ -1,13 +1,33 @@
-.main {
-  font: Arial, Helvetica, sans-serif;
+body {
+  box-sizing: border-box;
   font-size: 16px;
-}
-.weekday {
   font-style: normal;
 }
-.weekend {
-  font-style: italic;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #42de5f;
 }
-.today {
-  font-weight: bold;
+#color {
+  text-align: center;
+  color: white;
+}
+#change {
+  margin: 100px auto;
+  width: 150px;
+  height: 50px;
+  background-color: #fff;
+  color: #42de5f;
+}
+#change {
+  margin: 100px auto;
+  width: 150px;
+  height: 50px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 20px;
 }
